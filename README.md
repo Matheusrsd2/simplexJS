@@ -1,5 +1,7 @@
 - Simplex - 
 
+Alunos: Matheus dos Reis RA: 582621   /   Ingrid Ortega RA: 581984  /   Vinicius Cavalcanti RA: 578878
+
 
 Projeto para a disciplina de Pesquisa Operacional
 5º Semestre Sistemas de Informação - UNIVEM
