@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Simplex</title>
+    <title>SimplexJS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -14,9 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
     </script>
-    <!--link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet" /!-->
+    <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <script src="content/jspdf/jquery.min.js"></script>
-    <link rel="stylesheet" href="content/css/materialize.css">
     <script src="content/jspdf/jspdf.min.js"></script>
     <script src="content/jspdf/html2canvas.min.js"></script>
     <script src="simplex.js"></script>
@@ -26,11 +25,11 @@
 <body>
     <!-- Inicio -->
     <div class="text-center" style="display: block;" id="inicio">
-        <div class="card text-center" style="background-color:#20B2AA;">
+        <div class="card text-center">
             <div class="card-header">
-                <h2 style="color:#FFF5EE;">SIMPLEX</h2>
+                <h2>Simplex</h2>
             </div>
-            <div class="card-body" style="background-color: #ffa07a;">
+            <div class="card-body">
                 <div class="container">
                     <span>Método:&emsp;</span>
                     <label class="radio-inline" id="objetivo">
@@ -41,8 +40,8 @@
                         <br>
                     </label>
                 </div>
-                <div class="container" >
-                    Informe o número de variáveis de DECISÃO 
+                <div class="container" style="background-color: #f5f5f5">
+                    Informe o número de variáveis 
                     <div class="mt-2">
                         <label>
                             <input class="form-control" type="number" id="variaveis" name="variaveis" min="1" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
@@ -54,26 +53,27 @@
                             <input class="form-control" type="number" id="restricoes" name="restricoes" min="1" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
                         </label>
                     </div>
-                    Informe o número de iterações 
+                    Informe o número de iterações
                     <div class="mt-2">
                         <label>
                             <input class="form-control" type="number" id="iteracoes" name="iteracoes" value="100" min="1" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
                         </label>
                     </div>
+                   
                 </div>
                 <br>
-                <button class="btn btn-secondary" type="button" onclick="history.go(-1)">Voltar</button>
-                <button class="btn btn-primary" type="button" onclick="gerarTabela()">Próximo</button>
+                <button class="btn btn-primary" style="background-color: #63b5cf;"type="button" onclick="history.go(-1)">Voltar</button>
+                <button class="btn btn-secondary" style="background-color: #9400d3;"type="button" onclick="gerarTabela()">Próximo</button>
             </div>
         </div>
     </div>
 
     <!-- inserção parametros -->
-    <div class="card " style="display: none;"  id="parametros">
-        <div class="card-header text-center" style="background-color:#20B2AA;">
-                <h2 style="color:#FFF5EE;">Simplex</h2>
+    <div class="card " style="display: none;" id="parametros">
+        <div class="card-header text-center">
+                <h2>Decision</h2>
         </div>
-        <div class="card-body" style="background-color: #ffa07a;">
+        <div class="card-body">
             <h3 class="card-title text-center">Objetivos e Restrições</h3>
             <div class="row">
                 <div class="col-sm-12">
@@ -84,16 +84,16 @@
                             </tbody>
                         </table>
                         <center>
-                        <button class="btn btn-success" type="button" onclick="adicionarRestricao()">Adicionar restrição</button>
+                        <button class="btn btn-success" style="background-color: #9400d3;" type="button" onclick="adicionarRestricao()">Adicionar restrição</button>
                     </center>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 pl-2 mt-5">
                     <center>
-                    <button class="btn btn-primary" type="button" onclick="resolverpassoapasso()">Passo a
+                    <button class="btn btn-primary" style="background-color: #9400d3;" type="button" onclick="resolverpassoapasso()">Passo a
                         Passo</button>
-                    <button class="btn btn-success" type="button" onclick="resolverSimplex()">Resoluçao Direta</button>
+                    <button class="btn btn-success" style="background-color: #9400d3;" type="button" onclick="resolverSimplex()">Resoluçao Direta</button>
                     <button class="btn" onclick="reiniciar()">Voltar</button>
                 </center>
                 </div>
@@ -102,12 +102,12 @@
         </div>
     </div>
 
-    <!-- Passo a passo !-->
+    <!-- Passo a passo -->
     <div class="card text-center" style="display: none;" id="passoapasso">
-            <div class="card-header" style="background-color:#20B2AA;">
-              <h2 style="color:#FFF5EE;">Simplex</h2>  
+            <div class="card-header">
+              <h2>SIMPLEX</h2>  
             </div>
-            <div class="card-body" style="background-color: #ffa07a;">
+            <div class="card-body">
             <hr />
             <div class="text-center">
                 <h3 id="passoapassotitle">Passo a Passo </h3>
@@ -133,19 +133,19 @@
 
     <!-- Pagina Solucao -->
     <div class="card text-center" style="display: none;" id="solucao">
-        <div class="card-header" style="background-color:#20B2AA;"id="solucaoHeader">
-            <h3 style="color:#FFF5EE;">Simplex</h3>
+        <div class="card-header" id="solucaoHeader">
+            <h3>SIMPLEX</h3>
         </div>
-        <div class="card-body" style="background-color: #ffa07a;">
+        <div class="card-body">
             
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                   
+                    <!--
                     <button class="btn" onclick="analise()">Análise de Sensibilidade</button>
                                 
                                 <button class="btn" onclick="reiniciar()">Reiniciar</button>
-                               
-                            <h3 class="card-title mt-3 text-center">Solução</h3>
+                                -->
+                            <h3 class="card-title mt-3 text-center">Solução Ótima</h3>
                         <table class="table table-bordered">
                             <thead id="resultado_header"></thead>
                             <tbody id="resultado_simplex">
@@ -166,7 +166,7 @@
                 <!--div class="row">
                         <div class="col-sm-12 col-lg-12" >
                                 <div class="card bg-light ">
-                                        <div class="card-header">Explicativo</div>
+                                        <div class="card-header"></div>
                                         <div class="card-body">
                                           <h5 class="card-title">Análise de Sensibilidade</h5>
                                           <p class="card-text">Uma análise de sensibilidade é uma avaliação que procura estimar o resultado final de acordo com oscilações das variáveis determinantes.<br/> Ou seja, na análise de sensibilidade, são testadas diversas variáveis diferentes para se entender o efeito que cada uma produz no final do processo.</p>
@@ -175,16 +175,7 @@
                                         </div>
                                       </div>        
                      
-                </div!-->
-            </div>
-        </div>
-        <!--div class="row" style="display: none;" id="menufinal" >
-            <div class="col-sm-12 mt-1">
-                <center>
-                <button class="btn btn-primary" onclick="print()">Imprimir</button>
-                <button class="btn btn-danger" id="btnPDF">Gerar PDF</button>
-                <button class="btn" onclick="reiniciar()">Voltar</button>
-            </center>
+                </div>
             </div>
         </div!-->
 </html>
